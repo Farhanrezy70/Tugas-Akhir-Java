@@ -6,15 +6,29 @@ public class Ekspedisi {
 
         Scanner input = new Scanner(System.in);
 
-        String Namabarang, Tujuan, tambahkemasan, packing;
+        String Tujuan, tambahkemasan, packing;
         int ongkosberat, totalbiaya, Beratbarang, biayaPengiriman, ongkir, kemasan;
         int kg1 = 10000, kg2 = 20000, kg3 = 50000, Express = 30000, Reguler = 10000, Kargo = 20000;
+        String [] Namabarang = new String[1];
 
-        System.out.print("Masukkan nama barang : ");
-        Namabarang = input.nextLine();
+        //fitur penambahan barang
+        boolean pilihan1=true;
+        while (pilihan1){
+        for (int i = 0; i <Namabarang.length; i++){
+            System.out.print("Masukkan nama barang : ");
+             Namabarang[i] = input.next();
+
+            System.out.println("Apakah anda ingin menambahkan barang lagi? (ya/tidak): ");
+            String lanjut1 = input.next();
+            if (lanjut1.equalsIgnoreCase("tidak")) {
+                pilihan1 = false;
+            }
+        }
+        }
         System.out.print("Masukkan Alamat : ");
-        Tujuan = input.nextLine();
+        Tujuan = input.next();
 
+        //fitur penghitungan berat menggunakan if else
         System.out.print("Berat Barang yang dikirim = ");
         Beratbarang = input.nextInt();
         
@@ -30,8 +44,10 @@ public class Ekspedisi {
         }
         System.out.println("total ongkos berat barang = " + ongkosberat);
 
+        //perulangan untuk fitur penghitungan biaya pengiriman
         boolean pilihan = true;
         while (pilihan) {
+            //penggunaan fitur switch case untuk memilih jasa ekspedisi
             System.out.print("Pilih jenis pengiriman  (1. Express, 2. Reguler, 3. Kargo): ");
             biayaPengiriman = input.nextInt();
             switch (biayaPengiriman) {
@@ -51,6 +67,7 @@ public class Ekspedisi {
             System.out.print("apakah barang sudah dikemas : ");
             packing = input.next();
 
+            //penggunaan nested if untuk penambahan fitur tambah kemasan
             if (packing.equalsIgnoreCase("belum")) {
                 if (Beratbarang <= 2)
                     kemasan = 5000;
@@ -64,10 +81,12 @@ public class Ekspedisi {
 
             ongkir = biayaPengiriman + kemasan;
 
+            //print hasil pengisian data
             System.out.println("---------------------------");
             System.out.println("Nama Barang : " + Namabarang);
             System.out.println("Tujuan Pengiriman : " + Tujuan);
             System.out.println("Total biaya pengiriman = " + ongkir);
+        
 
             System.out.println("---------------------------");
             System.out.println("Apakah anda ingin menghitung biaya pengiriman lagi? (ya/tidak): ");
