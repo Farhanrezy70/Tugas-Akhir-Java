@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ekspedisi {
+public class testProject {
 
     public static void main(String[] args) {
 
@@ -9,24 +9,40 @@ public class Ekspedisi {
         String Tujuan, tambahkemasan, packing;
         int ongkosberat, totalbiaya, Beratbarang, biayaPengiriman, ongkir, kemasan;
         int kg1 = 10000, kg2 = 20000, kg3 = 50000, Express = 30000, Reguler = 10000, Kargo = 20000;
-        String [] Namabarang = new String[1];
+        int[] nomerpelanggan = new int[1];
+        String[][] dataPengiriman = new String[1][4];
 
         //fitur penambahan barang
         boolean pilihan1=true;
         while (pilihan1){
-        for (int i = 0; i <Namabarang.length; i++){
-            System.out.print("Masukkan nama barang : ");
-             Namabarang[i] = input.next();
-
-            System.out.println("Apakah anda ingin menambahkan barang lagi? (ya/tidak): ");
-            String lanjut1 = input.next();
-            if (lanjut1.equalsIgnoreCase("tidak")) {
-                pilihan1 = false;
+            for (int i = 0; i < nomerpelanggan.length; i++) {
+                System.out.print("Masukkan informasi untuk pelanggan ke-");
+                nomerpelanggan[i] = input.nextInt();
             }
+        
+            for (int i = 0; i < dataPengiriman.length; i++) {
+                System.out.print("Nama Pelanggan: ");
+                dataPengiriman[i][0] = input.next();
+
+                System.out.print("Nama Barang: ");
+                dataPengiriman[i][1] = input.next();
+
+                System.out.print("Nomor Paket: ");
+                dataPengiriman[i][2] = input.next();
+
+                System.out.print("Alamat Pengiriman: ");
+                dataPengiriman[i][3] = input.next();
+
+                System.out.println(); // Pindah ke baris baru untuk pelanggan berikutnya
+                System.out.println("Apakah anda ingin menambahkan barang lagi? (ya/tidak): ");
+                String lanjut1 = input.next();
+                if (lanjut1.equalsIgnoreCase("tidak")) {
+                    pilihan1 = false;
+                }   
+            break;
+            }
+
         }
-        }
-        System.out.print("Masukkan Alamat : ");
-        Tujuan = input.next();
 
         //fitur penghitungan berat menggunakan if else
         System.out.print("Berat Barang yang dikirim = ");
@@ -83,11 +99,21 @@ public class Ekspedisi {
 
             //print hasil pengisian data
             System.out.println("---------------------------");
-            System.out.println("Nama Barang : " + Namabarang);
-            System.out.println("Tujuan Pengiriman : " + Tujuan);
-            System.out.println("Total biaya pengiriman = " + ongkir);
-        
-
+            for (int i = 0; i < nomerpelanggan.length; i++) {
+                System.out.print("informasi Pelanggan ke-");
+                nomerpelanggan[i] = input.nextInt();
+                    // Menampilkan semua informasi pengiriman
+                
+            }
+            
+            for (int i = 0; i < dataPengiriman.length; i++) {
+                System.out.println("Nama Pelanggan: " + dataPengiriman[i][0]);
+                System.out.println("Nama Barang: " + dataPengiriman[i][1]);
+                System.out.println("Nomor Paket: " + dataPengiriman[i][2]);
+                System.out.println("Alamat Pengiriman: " + dataPengiriman[i][3]);
+                System.out.println();
+            }
+            
             System.out.println("---------------------------");
             System.out.println("Apakah anda ingin menghitung biaya pengiriman lagi? (ya/tidak): ");
             String lanjut = input.next();
